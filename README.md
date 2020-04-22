@@ -1,17 +1,19 @@
 
-# S.BUS受信機USBジョイスティック変換 (USB Joystick from a RC Receiver)
+# S.BUS受信機USBジョイスティック変換
 Date: 2020/04/20
+
+<img src="image/photo0.jpg" width="720" alt="title">
 
 ## 概要
 ドローンシミュレーターをUSBのジョイスティックとして使用するためのものです。MS-Windows 10 (1909)上のRealFlight9で動作確認しました。
 
 完成写真
 
-<img src="image/photo1.jpg" width="320" alt="Photo 0">
+<img src="image/photo1.jpg" width="320" alt="Photo 1">
 
 ブレッドボード写真
 
-<img src="image/photo2.jpg" width="320" alt="Photo 1">
+<img src="image/photo2.jpg" width="320" alt="Photo 2">
 
 ## 使用機材
 - [双葉電子工業 14SG（14ch-2.4GHz FASSTestモデル）](https://www.rc.futaba.co.jp/propo/air/14sg.html)
