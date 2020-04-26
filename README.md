@@ -170,7 +170,7 @@ RealFlight 9を起動して、コントローラーの設定したら練習す�
 ## ゲーム設定
 
 ### FPV Freerider Recharged
-macOS 10.15の **FPV Freerider Recharged** は、 **Throttle** と **Rudder** を認識しません。
+macOS 10.15の **FPV Freerider Recharged** は、 **Throttle** と **Rudder** を認識しません。
 左スティックを`XAxis`・`YAxis`、右スティックを`RxAxis`・`RyAxis`にするとプレイできるのでコードを変更します。
 
 なお初回起動後に **システム環境設定** → **セキュリティとプライバシー** → **プライバシー** → **入力監視** の項目にゲームが表示されるので、チェックを入れるとゲーム中で使えるようになります。
