@@ -167,6 +167,59 @@ RealFlight 9を起動して、コントローラーの設定したら練習す�
 
 <img src="image/win_ss3.jpg" width="320" alt="RealFlight 9">
 
+## ゲーム設定
+
+### FPV Freerider Recharged
+macOS 10.15の **FPV Freerider Recharged** は、 **Throttle** と **Rudder** を認識しません。
+左スティックを`XAxis`・`YAxis`、右スティックを`RxAxis`・`RyAxis`にするとプレイできるのでコードを変更します。
+
+なお初回起動後に **システム環境設定** → **セキュリティとプライバシー** → **プライバシー** → **入力監視** の項目にゲームが表示されるので、チェックを入れるとゲーム中で使えるようになります。
+
+~~~C++
+Joystick_ Joystick(
+  JOYSTICK_DEFAULT_REPORT_ID, // hidReportId
+  JOYSTICK_TYPE_JOYSTICK,     // joystickType
+  BUTTON_COUNT,               // buttonCount
+  0,                          // hatSwitchCount
+  true,                       // includeXAxis
+  true,                       // includeYAxis
+  false,                      // includeZAxis
+  true,                       // includeRxAxis
+  true,                       // includeRyAxis
+  false,                      // includeRzAxis
+  false,                      // includeRudder
+  false,                      // includeThrottle
+  false,                      // includeAccelerator
+  false,                      // includeBrake
+  false);                     // includeSteering
+
+void setup() {
+  sbus.begin();
+
+  Joystick.setXAxisRange(224, 1824);
+  Joystick.setYAxisRange(224, 1824);
+  Joystick.setRxAxisRange(224, 1824);
+  Joystick.setRyAxisRange(224, 1824);
+  Joystick.begin(false);
+}
+
+void loop() {
+  if(sbus.read(&channels[0], &failSafe, &lostFrame)){
+    Joystick.setRxAxis(channels[0]);
+    Joystick.setRyAxis(channels[1]);
+    Joystick.setXAxis(channels[2]);
+    Joystick.setYAxis(channels[3]);
+
+    for (int i = 0; i < BUTTON_COUNT; i++) {
+      Joystick.setButton(i, (uint8_t)(channels[i+4] > Threshold));
+    }
+
+    Joystick.sendState();
+  }
+}
+~~~
+
+
 ## さいごに
 
 お疲れさまでした。
